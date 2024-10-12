@@ -8,7 +8,7 @@ type ListItemProps = {
 };
 
 function UserCard({ user }: ListItemProps) {
-  const { address } = user;
+  const { address, company } = user;
 
   return (
     <div className='w-full max-w-sm p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
@@ -24,6 +24,12 @@ function UserCard({ user }: ListItemProps) {
         <span className='text-sm text-gray-500 dark:text-gray-400'>
           {user.phone}
         </span>
+
+        <h5 className='mb-1 mt-5 text-md font-medium text-gray-900 dark:text-white'>
+          Company
+        </h5>
+        <span className='text-sm text-center text-gray-500 dark:text-gray-400'>{`${company.name}`}</span>
+
         <h5 className='mb-1 mt-5 text-md font-medium text-gray-900 dark:text-white'>
           Address
         </h5>

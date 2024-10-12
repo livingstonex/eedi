@@ -24,7 +24,7 @@ export default function ListItem() {
   return (
     <div className='bg-blue-100'>
       <CancelIcon />
-      <div className='min-h-full w-80 flex justify-center items-center p-8'>
+      <div className='min-h-full w-96 flex justify-center items-center p-8'>
         <MainContent />
       </div>
     </div>

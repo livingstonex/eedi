@@ -8,8 +8,8 @@ import { describe, test, expect } from 'vitest';
 type User = z.infer<typeof usersSchema>[number];
 
 const mockData: User[] = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Jane Smith' },
+  { id: 1, name: 'John Doe', email: 'john@test.com' },
+  { id: 2, name: 'Jane Smith', email: 'jane@test.com' },
 ];
 
 describe('Lists Component', () => {

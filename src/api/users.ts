@@ -4,6 +4,7 @@ import { z } from 'zod';
 export const userSchema = z.object({
   id: z.number(),
   name: z.string(),
+  email: z.string(),
 });
 
 export const usersSchema = z.array(userSchema);
@@ -23,6 +24,7 @@ export async function getUsers() {
   const selectedData = data.map((user: Record<string, any>) => ({
     id: user.id,
     name: user.name,
+    email: user.email,
   }));
 
   return parseWith(getUsers.responseSchema)(selectedData); // Validate the response

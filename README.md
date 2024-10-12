@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# EEDI - React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prerequisite
 
-Currently, two official plugins are available:
+- Node (v18 | v20) and npm -- If you don't have node installed, it's recommended that you use [nvm](https://github.com/nvm-sh/nvm) for the installation, otherwise ensure you've the right node version for the project as defined in the project's [.nvmrc](https://github.com/Fundthrough/nebula/blob/development/.nvmrc)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to Install
 
-## Expanding the ESLint configuration
+1. `npm install`
+2. `npm run dev` to start the dev server
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Note:** you will need a `.env` file under root `./` directory. You can get the env from me or you can create yours with the value of plaeholder API as VITE_BASE_API_URL=value_of_the_api_url, otherwise you will run into errors related to making API requests.
 
-- Configure the top-level `parserOptions` property like this:
+## Tests
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+To run all tests, simple run the command `npm run test`
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## App Structure and Conventions
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This is a guide for building different kind of components and how to structure the relationship between them.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Data
+
+- ReactQuery: Manages all data fetching lifecycle and states, provides elegant handling of caching, fetch status update, cache invalidations, etc.
+
+### Type Validations
+
+- Zod: We have leveraged the zod library to provide data typing and data validation capabilities to our application.
+
+### Custom Hooks
+
+- Custom hooks where used to handle queries using the ReactQuery api client. One of those can be found in the: `/queries/usersGetUser.ts` and `/queries/userGetUser.ts`
+  Sample Query client:
+
+```ts
+// useGetUser.ts
+const getUserQueryOptions = (id: number, options: CustomOptions = {}) =>
+  queryOptions({
+    retry: 2,
+    staleTime: 1000 * 60 * 5, // Data is fresh for 5 minutes
+    ...options,
+    queryKey: ['/user', id],
+    queryFn: () => getUser(id),
+  });
+
+export function useGetUser(id: number, options: CustomOptions = {}) {
+  return useQuery<User>(getUserQueryOptions(id, options));
+}
 ```

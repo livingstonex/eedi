@@ -9,7 +9,7 @@
 1. `npm install`
 2. `npm run dev` to start the dev server
 
-- **Note:** you will need a `.env` file under root `./` directory. You can get the env from me or you can create yours with the value of plaeholder API as VITE_BASE_API_URL=value_of_the_api_url, otherwise you will run into errors related to making API requests.
+- **Note:** you will need a `.env` file under root `./` directory. You can get the env from me or you can create yours with the value of the placeholder API as VITE_BASE_API_URL=value_of_the_api_url, otherwise you will run into errors related to making API requests.
 
 ## Tests
 

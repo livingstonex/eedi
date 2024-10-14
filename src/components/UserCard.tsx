@@ -16,24 +16,42 @@ function UserCard({ user }: ListItemProps) {
         <img
           className='w-24 h-24 mb-3 rounded-full shadow-lg'
           src='https://images.unsplash.com/photo-1455894127589-22f75500213a'
-          alt='Bonnie image'
+          alt='profile picture'
         />
-        <h5 className='mb-1 text-md font-medium text-gray-900 dark:text-white'>
+        <h5
+          className='mb-1 text-md font-medium text-gray-900 dark:text-white'
+          aria-label={user.name}
+        >
           {user.name}
         </h5>
-        <span className='text-sm text-gray-500 dark:text-gray-400'>
+        <span
+          className='text-sm text-gray-500 dark:text-gray-400'
+          aria-label={user.phone}
+        >
           {user.phone}
         </span>
 
-        <h5 className='mb-1 mt-5 text-md font-medium text-gray-900 dark:text-white'>
+        <h5
+          className='mb-1 mt-5 text-md font-medium text-gray-900 dark:text-white'
+          aria-label='Company'
+        >
           Company
         </h5>
-        <span className='text-sm text-center text-gray-500 dark:text-gray-400'>{`${company.name}`}</span>
+        <span
+          className='text-sm text-center text-gray-500 dark:text-gray-400'
+          aria-label={company.name}
+        >{`${company.name}`}</span>
 
-        <h5 className='mb-1 mt-5 text-md font-medium text-gray-900 dark:text-white'>
+        <h5
+          className='mb-1 mt-5 text-md font-medium text-gray-900 dark:text-white'
+          aria-label='Address'
+        >
           Address
         </h5>
-        <span className='text-sm text-center text-gray-500 dark:text-gray-400'>{`${address.suite} - ${address.street}, ${address.city}, ${address.zipcode}.`}</span>
+        <span
+          className='text-sm text-center text-gray-500 dark:text-gray-400'
+          aria-label={`${address.suite} - ${address.street}, ${address.city}, ${address.zipcode}.`}
+        >{`${address.suite} - ${address.street}, ${address.city}, ${address.zipcode}.`}</span>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ export async function getUsers() {
 
   const data = await response.json();
 
-  // Select only id and name
+  // Select only id, name and email
   const selectedData = data.map((user: Record<string, any>) => ({
     id: user.id,
     name: user.name,

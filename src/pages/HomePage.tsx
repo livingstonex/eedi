@@ -18,7 +18,7 @@ function MainContent() {
       );
     case 'success':
       return (
-        <div className='max-w-screen-xl flex items-center xs:justify-between pl-4 md:justify-start mx-auto'>
+        <div className='max-w-screen-xl flex items-center xs:justify-between md:pl-4 md:justify-start mx-auto'>
           <Lists data={data} />
         </div>
       );
